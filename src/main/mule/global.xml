@@ -14,9 +14,9 @@ http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/twilio-connector http://www.mulesoft.org/schema/mule/twilio-connector/current/mule-twilio-connector.xsd">
     
+    <global-property doc:name="Global Property" doc:id="dfcd2828-f277-4933-8a66-9124403ed50a" name="mule.env" value="dev" />
     <configuration-properties doc:name="Configuration properties" doc:id="69bec86d-85c6-4d7c-98cc-309654452414" file="common.properties" />
     <configuration-properties doc:name="Configuration properties" doc:id="3bd92583-01e3-4b18-82ef-27fc558ca395" file="mule.${mule.env}.properties" />
-    <global-property doc:name="Global Property" doc:id="dfcd2828-f277-4933-8a66-9124403ed50a" name="mule.env" value="dev" />
 
 	<http:listener-config
 		name="retail_notifications_system_api-httpListenerConfig" doc:name="HTTP Listener config">
@@ -34,8 +34,10 @@ http://www.mulesoft.org/schema/mule/twilio-connector http://www.mulesoft.org/sch
 			tlsContext="TLS_Context" />
 	</email:smtp-config>
 	<apikit:config name="retail_notifications_system_api-config"
-		raml="retail_notifications_system_api.raml" outboundHeadersMapName="outboundHeaders"
-		httpStatusVarName="httpStatus" />
-	  <twilio-connector:config name="Twilio_Connector_Config" doc:name="Twilio Connector Config" doc:id="96787aab-dd2b-4d5f-b984-10cca47bf34f" property_username="${twilio.account.username}" property_password="${twilio.account.password}" />
+		outboundHeadersMapName="outboundHeaders"
+		httpStatusVarName="httpStatus" api="api/retail_notifications_system_api.raml"/>
+	  <twilio-connector:config name="Twilio_Connector_Config" doc:name="Twilio Connector Config" doc:id="96787aab-dd2b-4d5f-b984-10cca47bf34f" property_username="${twilio.account.username}" property_password="${twilio.account.password}" >
+		<twilio-connector:connection />
+	</twilio-connector:config>
     	
 </mule>
