@@ -69,4 +69,4 @@
             <layout>default</layout>
         </repository>
     </repositories>
-</project>
+<scm><connection>scm:git:git@github.com:mulesoft/template-retail-notifications-system-api.git</connection><developerConnection>scm:git:git@github.com:mulesoft/template-retail-notifications-system-api.git</developerConnection><url>https://github.com/mulesoft/template-retail-notifications-system-api</url><tag>HEAD</tag></scm></project>
